@@ -1,5 +1,7 @@
+const DATA_URL = "https://raw.githubusercontent.com/yoanbernabeu/YoanDevGPT/main/data.json";
+
 chrome.runtime.onInstalled.addListener(() => {
-    fetch("data.json")
+    fetch(DATA_URL)
         .then((response) => response.json())
         .then((data) => {
             data.forEach((item, index) => {
@@ -14,7 +16,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
     chrome.contextMenus.create({
         id: "parent",
-        title: "Mon Extension",
+        title: "YoanDevGPT",
         contexts: ["editable"],
     });
 });
@@ -22,7 +24,7 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
     const index = parseInt(info.menuItemId);
 
-    fetch("data.json")
+    fetch(DATA_URL)
         .then((response) => response.json())
         .then((data) => {
             const prompt = data[index].prompt;
