@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Mon Extension",
+    "version": "1.0",
+    "description": "Ajoute un sous-menu au clic droit dans un champ de formulaire",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": ["activeTab", "contextMenus", "scripting"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["contentScript.js"]
+        }
+    ]
+}
