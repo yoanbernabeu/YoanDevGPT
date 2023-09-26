@@ -9,14 +9,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install  # Assurez-vous que votre projet a un package.json contenant les dépendances nécessaires.
-
       - name: Build Firefox Extension
         run: |
           mkdir -p ${{ env.FIREFOX_OUTPUT_DIR }}
