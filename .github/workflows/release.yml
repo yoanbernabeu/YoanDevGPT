@@ -1,6 +1,9 @@
 name: Build and Package Extensions
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   build:
