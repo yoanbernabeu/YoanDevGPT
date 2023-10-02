@@ -19,7 +19,7 @@
 
 ## Description
 
-YoanDevGPT est une extension pour le navigateur Google Chrome qui permet d'utiliser une collection de prompts pour spécialiser le comportement de ChatGPT.
+YoanDevGPT est une extension pour les navigateurs Google Chrome et Mozilla Firefox qui permet d'utiliser une collection de prompts pour spécialiser le comportement de ChatGPT.
 
 ## Prérequis
 
