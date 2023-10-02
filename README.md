@@ -38,7 +38,7 @@ Libre à vous de l'utiliser tel quel ou de la modifier pour l'adapter à vos bes
 
 Pour installer cette extension en mode développeur, suivez les étapes ci-dessous :
 
-1. Téléchargez la dernière version de l'extension pour Google Chrome depuis la page [Releases](https://github.com/yoanbernabeu/YoanDevGPT/releases)
+1. Téléchargez la dernière version de l'extension pour Google Chrome depuis la page [Releases](https://github.com/yoanbernabeu/YoanDevGPT/releases/latest)
 2. Décompressez l'archive téléchargée.
 3. Ouvrez Google Chrome et accédez à `chrome://extensions/`.
 4. Activez le mode "Developer mode" (Mode développeur) situé en haut à droite de la page.
@@ -49,7 +49,7 @@ Pour installer cette extension en mode développeur, suivez les étapes ci-desso
 
 Pour installer cette extension en mode développeur, suivez les étapes ci-dessous :
 
-1. Téléchargez la dernière version de l'extension pour Firefox depuis la page [Releases](https://github.com/yoanbernabeu/YoanDevGPT/releases)
+1. Téléchargez la dernière version de l'extension pour Firefox depuis la page [Releases](https://github.com/yoanbernabeu/YoanDevGPT/releases/latest)
 2. Ouvrez Firefox et accédez à `about:debugging#/runtime/this-firefox`.
 3. Cliquez sur "Load Temporary Add-on..." (Charger une extension temporaire) et sélectionnez le fichier `Firefox_YoanDevGPT.xpi` téléchargé précédemment.
 
