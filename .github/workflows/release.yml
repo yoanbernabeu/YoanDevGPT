@@ -1,6 +1,9 @@
 name: Build and Package Extensions
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -36,7 +39,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           tag_name: v${{ steps.package.outputs.version }}
           release_name: v${{ steps.package.outputs.version }}
@@ -46,7 +49,7 @@ jobs:
       - name: Upload Firefox Extension to Release
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # Cela provient de l'étape de création de la Release
           asset_path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
@@ -56,7 +59,7 @@ jobs:
       - name: Upload Chrome Extension to Release
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # Cela provient de l'étape de création de la Release
           asset_path: ./dist/chrome/chrome_${{ github.event.repository.name }}.zip
