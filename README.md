@@ -14,12 +14,14 @@
     - [Mozilla Firefox](#mozilla-firefox)
   - [Fonctionnalités principales](#fonctionnalités-principales)
   - [Utilisation](#utilisation)
-  - [Auteur](#auteur)
+    - [Choisir un prompt](#choisir-un-prompt)
+    - [Ajouter sa propre liste de prompts](#ajouter-sa-propre-liste-de-prompts)
+  - [Auteurs](#auteurs)
   - [Licence](#licence)
 
 ## Description
 
-YoanDevGPT est une extension pour les navigateurs Google Chrome et Mozilla Firefox qui permet d'utiliser une collection de prompts pour spécialiser le comportement de ChatGPT.
+YoanDevGPT est une extension pour les navigateurs Google Chrome et Mozilla Firefox qui permet d'utiliser une collection de prompts (ou votre propre liste) pour spécialiser le comportement de ChatGPT.
 
 ## Prérequis
 
@@ -57,7 +59,15 @@ Pour installer cette extension en mode développeur, suivez les étapes ci-desso
 
 Une fois l'extension installée, elle ajoute une nouvelle option au menu contextuel (clic droit) qui vous permet de sélectionner parmi une liste de prompts pré-renseignés pour spécialiser le comportement de ChatGPT.
 
+![Demo GIF](./demo.gif)
+
+Vous pouvez également ajouter vos propres prompts en fournissant l'url d'un fichier JSON contenant un tableau d'objets en vous inspirant du fichier [data.json](./data.json).
+
+![Demo 2 GIF](./demo2.gif)
+
 ## Utilisation
+
+### Choisir un prompt
 
 Pour utiliser l'extension YoanDevGPT, suivez les étapes ci-dessous :
 
@@ -65,9 +75,19 @@ Pour utiliser l'extension YoanDevGPT, suivez les étapes ci-dessous :
 2. Sélectionnez "YoanDevGPT" dans le menu contextuel.
 3. Choisissez un prompt dans la liste qui apparaît.
 
-## Auteur
+### Ajouter sa propre liste de prompts
+
+Pour ajouter sa propre liste de prompts, suivez les étapes ci-dessous :
+
+1. Créez un fichier JSON contenant un tableau d'objets en vous inspirant du fichier [data.json](./data.json).
+2. Hébergez ce fichier sur un serveur web (GitHub, GitLab, etc.).
+3. Cliquez avec le bouton droit de la souris sur l'icône de l'extension YoanDevGPT.
+4. Renseignez l'url du fichier JSON dans le champ "URL de données" et cliquez sur "Sauvegarder".
+
+## Auteurs
 
 - [Yoan Bernabeu](https://github.com/yoanbernabeu)
+- [Pascal Cañadas](https://github.com/leknoppix)
 
 ## Licence
 
