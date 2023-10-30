@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "YoanDevGPT",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Collection de prompts pour spécialiser les interactions avec ChatGPT",
   "icons": {
     "16": "icons/icon16.png",
@@ -18,7 +18,11 @@
       "128": "icons/icon128.png"
     }
   },
-  "permissions": ["activeTab",
+  "options_ui": {
+    "page": "src/popup.html"
+  },
+  "permissions": ["storage",
+    "activeTab",
     "contextMenus",
     "<all_urls>"],
   "background": {
