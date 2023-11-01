@@ -69,7 +69,7 @@ jobs:
         with:
           uuid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
           xpi: ${{ steps.upload-build.outputs.target }}.xpi
-          manifest: ${{ env.FIREFOX_OUTPUT_DIR }}/manifest.json
+          manifest: ${{ env.FIREFOX_EXTENSION_DIR }}/manifest.json
           api-key: ${{ secrets.FIREFOX_API_KEY }}
           api-secret: ${{ secrets.FIREFOX_API_SECRET }}
         env:
