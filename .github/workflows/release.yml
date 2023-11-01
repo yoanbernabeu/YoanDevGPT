@@ -44,6 +44,7 @@ jobs:
           prerelease: false
 
       - name: Upload Firefox Extension to Release
+        id: upload-build
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
@@ -67,7 +68,9 @@ jobs:
         uses: trmcnvn/firefox-addon@v1
         with:
           uuid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
-          xpi: build/Firefox_${{ github.event.repository.name }}.xpi
-          manifest: firefox/manifest.json
+          xpi: ${{ steps.upload-build.outputs.target }}
+          manifest: ${{ env.FIREFOX_OUTPUT_DIR }}/manifest.json
           api-key: ${{ secrets.FIREFOX_API_KEY }}
           api-secret: ${{ secrets.FIREFOX_API_SECRET }}
+        env:
+          FIREFOX_EXTENSION_DIR: "firefox"
