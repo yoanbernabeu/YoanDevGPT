@@ -68,6 +68,6 @@ jobs:
         with:
           uuid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
           xpi: build/Firefox_${{ github.event.repository.name }}.xpi
-          manifest: manifest.json
+          manifest: firefox/manifest.json
           api-key: ${{ secrets.FIREFOX_API_KEY }}
           api-secret: ${{ secrets.FIREFOX_API_SECRET }}
