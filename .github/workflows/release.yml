@@ -65,3 +65,12 @@ jobs:
           asset_path: ./dist/chrome/chrome_${{ github.event.repository.name }}.zip
           asset_name: Chrome_${{ github.event.repository.name }}.zip
           asset_content_type: application/zip
+      
+      - name: Upload to Firefox
+        uses: trmcnvn/firefox-addon@v1
+        with:
+          uuid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
+          xpi: build/Firefox_${{ github.event.repository.name }}.xpi
+          manifest: ${{ env.FIREFOX_OUTPUT_DIR }}/manifest.json
+          api-key: ${{ secrets.FIREFOX_API_KEY }}
+          api-secret: ${{ secrets.FIREFOX_API_SECRET }}
