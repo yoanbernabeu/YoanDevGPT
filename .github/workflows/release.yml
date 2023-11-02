@@ -69,10 +69,15 @@ jobs:
           name: firefox_${{ github.event.repository.name }}
           path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
 
+      - name: Publish Firefox Extension Artifact 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: manifest.json
+          path: ./dist/firefox/manifest.json
+          
       - name: Rename Firefox Extension Artifact
         run: |
           mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
-          mv ./${{ env.FIREFOX_EXTENSION_DIR }}/manifest.json ./dist/firefox/manifest.json
         env:
           FIREFOX_EXTENSION_DIR: "firefox"
         shell: bash
