@@ -81,7 +81,7 @@ jobs:
         uses: thoughtsunificator/firefox-publish-action@v0.0.2
         with:
           firefox-guid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
-          firefox-manifest: ${{ runner.workspace }/manifest.json
+          firefox-manifest: ${{ runner.workspace }}/manifest.json
           zip: ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.zip
           firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           firefox-jwt-secret: ${{ secrets.FIREFOX_API_SECRET }}
