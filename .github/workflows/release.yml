@@ -57,7 +57,7 @@ jobs:
       - name: Publish Firefox Extension Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: firefox_${{ github.event.repository.name }}.xpi
+          name: firefox-extension
           path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
 
       - name: Upload Chrome Extension to Release
@@ -74,7 +74,7 @@ jobs:
         uses: trmcnvn/firefox-addon@v1
         with:
           uuid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
-          xpi: ./firefox_${{ github.event.repository.name }}.xpi
+          xpi: ${{ steps.upload-build.outputs.artifact_path }}
           manifest: ${{ env.FIREFOX_EXTENSION_DIR }}/manifest.json
           api-key: ${{ secrets.FIREFOX_API_KEY }}
           api-secret: ${{ secrets.FIREFOX_API_SECRET }}
