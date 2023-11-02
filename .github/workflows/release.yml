@@ -65,3 +65,25 @@ jobs:
           asset_path: ./dist/chrome/chrome_${{ github.event.repository.name }}.zip
           asset_name: Chrome_${{ github.event.repository.name }}.zip
           asset_content_type: application/zip
+      
+      - name: Publish Firefox Extension Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: firefox_${{ github.event.repository.name }}
+          path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
+      
+      - name: Rename Firefox Extension Artifact
+        run: |
+          mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
+          mkdir public
+          mv ./firefox/manifest.json ./public/manifest.json
+        shell: bash
+
+      - name: Upload to Firefox
+        uses: thoughtsunificator/firefox-publish-action@v0.0.2
+        with:
+          firefox-guid: ${{ secrets.FIREFOX_UUID }}
+          firefox-manifest: ${{ github.workspace }}/public/manifest.json
+          zip: ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
+          firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
+          firefox-jwt-secret: ${{ secrets.FIREFOX_API_SECRET }}

@@ -1,6 +1,6 @@
 {
   "name": "YoanDevGPT",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Collection de prompts pour spécialiser les interactions avec ChatGPT",
   "repository": {
     "type": "git",
