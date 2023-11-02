@@ -73,7 +73,7 @@ jobs:
         run: |
           mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
           cd ${{ env.FIREFOX_EXTENSION_DIR }}
-          mv ./manifest.json ./dist/firefox/manifest.json
+          mv manifest.json ./dist/firefox/manifest.json
         env:
           FIREFOX_EXTENSION_DIR: "firefox"
         shell: bash
