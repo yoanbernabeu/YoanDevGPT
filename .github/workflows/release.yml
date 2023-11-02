@@ -74,14 +74,6 @@ jobs:
         with:
           name: manifest.json
           path: ./firefox/manifest.json
-      - name: Debug Firefox Extension Artifact
-        run: |
-            mv ${{ github.workspace }}/dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
-            mv ${{ github.workspace }}/firefox/manifest.json ./dist/firefox/manifest.json
-            ls -a ./dist/firefox
-        env:
-            FIREFOX_EXTENSION_DIR: "firefox"
-        shell: bash
   
       - name: Rename Firefox Extension Artifact
         run: |
@@ -93,11 +85,14 @@ jobs:
           FIREFOX_EXTENSION_DIR: "firefox"
         shell: bash
 
+      - name: Move manifest.json to public/
+        run: mv ./dist/firefox/manifest.json ./public/manifest.json
+
       - name: Upload to Firefox
         uses: thoughtsunificator/firefox-publish-action@v0.0.2
         with:
           firefox-guid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
-          firefox-manifest: ./dist/firefox/manifest.json
+          firefox-manifest: dist/firefox/manifest.json
           zip: ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
           firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           firefox-jwt-secret: ${{ secrets.FIREFOX_API_SECRET }}
