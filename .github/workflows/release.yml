@@ -69,6 +69,10 @@ jobs:
           name: firefox_${{ github.event.repository.name }}
           path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
 
+      - name: Rename Firefox Extension Artifact
+        run: mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.xpi
+        shell: bash
+
       - name: Upload to Firefox
         uses: trmcnvn/firefox-addon@v1
         with:
