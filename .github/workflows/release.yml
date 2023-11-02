@@ -75,6 +75,7 @@ jobs:
       - name: Rename Firefox Extension Artifact
         run: |
           mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
+          mkdir public
           mv ./firefox/manifest.json ./public/manifest.json
         shell: bash
 
