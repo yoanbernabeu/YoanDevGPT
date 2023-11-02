@@ -68,7 +68,10 @@ jobs:
         with:
           name: firefox_${{ github.event.repository.name }}
           path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
-
+      
+      - name: List files in ./firefox
+        run: ls -a ./firefox
+      
       - name: Rename Firefox Extension Artifact
         run: |
           mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
