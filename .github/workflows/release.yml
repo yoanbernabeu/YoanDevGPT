@@ -79,6 +79,8 @@ jobs:
         run: |
           mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
           mv ./firefox/manifest.json ./dist/firefox/manifest.json
+          cat ./firefox/manifest.json
+          cat ./dist/firefox/manifest.json
         env:
           FIREFOX_EXTENSION_DIR: "firefox"
         shell: bash
@@ -91,5 +93,3 @@ jobs:
           zip: ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
           firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           firefox-jwt-secret: ${{ secrets.FIREFOX_API_SECRET }}
-        env:
-          FIREFOX_EXTENSION_DIR: "dist/firefox"
