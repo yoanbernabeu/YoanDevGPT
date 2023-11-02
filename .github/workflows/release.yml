@@ -74,11 +74,12 @@ jobs:
         shell: bash
 
       - name: Upload to Firefox
-        uses: yayuyokitano/firefox-addon@v0.0.3-alpha
+        uses: thoughtsunificator/firefox-publish-action@v0.0.2
         with:
-          guid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
-          xpi_path: ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.zip
-          api_key: ${{ secrets.FIREFOX_API_KEY }}
-          api_secret: ${{ secrets.FIREFOX_API_SECRET }}
+          firefox-guid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
+          firefox-manifest: ${{ env.FIREFOX_EXTENSION_DIR }}/manifest.json
+          zip: ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.zip
+          firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
+          firefox-jwt-secret: ${{ secrets.FIREFOX_API_SECRET }}
         env:
           FIREFOX_EXTENSION_DIR: "firefox"
