@@ -82,4 +82,4 @@ jobs:
           firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           firefox-jwt-secret: ${{ secrets.FIREFOX_API_SECRET }}
         env:
-          FIREFOX_EXTENSION_DIR: "./dist/firefox"
+          FIREFOX_EXTENSION_DIR: "dist/firefox"
