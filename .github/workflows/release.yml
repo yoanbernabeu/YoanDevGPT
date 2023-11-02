@@ -75,14 +75,14 @@ jobs:
           name: manifest.json
           path: ./firefox/manifest.json
       - name: Debug Firefox Extension Artifact
-          run: |
+        run: |
             mv ${{ github.workspace }}/dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
             mv ${{ github.workspace }}/firefox/manifest.json ./dist/firefox/manifest.json
             ls -a ${{ github.workspace }}/firefox
             ls -a ./dist/firefox
-          env:
+        env:
             FIREFOX_EXTENSION_DIR: "firefox"
-          shell: bash
+        shell: bash
   
       - name: Rename Firefox Extension Artifact
         run: |
