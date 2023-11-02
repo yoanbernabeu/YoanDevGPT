@@ -70,16 +70,15 @@ jobs:
           path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
 
       - name: Rename Firefox Extension Artifact
-        run: mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.xpi
+        run: mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.zip
         shell: bash
 
       - name: Upload to Firefox
-        uses: trmcnvn/firefox-addon@v1
+        uses: yayuyokitano/firefox-addon@v0.0.3-alpha
         with:
-          uuid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
-          xpi: ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.xpi
-          manifest: ${{ env.FIREFOX_EXTENSION_DIR }}/manifest.json
-          api-key: ${{ secrets.FIREFOX_API_KEY }}
-          api-secret: ${{ secrets.FIREFOX_API_SECRET }}
+          guid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
+          xpi_path: ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.zip
+          api_key: ${{ secrets.FIREFOX_API_KEY }}
+          api_secret: ${{ secrets.FIREFOX_API_SECRET }}
         env:
           FIREFOX_EXTENSION_DIR: "firefox"
