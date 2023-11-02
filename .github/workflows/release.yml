@@ -53,12 +53,6 @@ jobs:
           asset_name: Firefox_${{ github.event.repository.name }}.xpi
           asset_content_type: application/x-xpinstall
 
-      - name: Publish Firefox Extension Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: firefox_${{ github.event.repository.name }}
-          path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
-
       - name: Upload Chrome Extension to Release
         uses: actions/upload-release-asset@v1
         env:
@@ -69,11 +63,21 @@ jobs:
           asset_name: Chrome_${{ github.event.repository.name }}.zip
           asset_content_type: application/zip
       
+      - name: Publish Firefox Extension Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: firefox_${{ github.event.repository.name }}
+          path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
+  
+      - name: Rename Firefox Extension Artifact
+        run: mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
+        shell: bash
+
       - name: Upload to Firefox
         uses: trmcnvn/firefox-addon@v1
         with:
           uuid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
-          xpi: ${{ steps.upload-build.outputs.artifact_path }}.xpi
+          xpi: ${{ steps.upload-build.outputs.artifact_path }}/firefox_${{ github.event.repository.name }}.xpi
           manifest: ${{ env.FIREFOX_EXTENSION_DIR }}/manifest.json
           api-key: ${{ secrets.FIREFOX_API_KEY }}
           api-secret: ${{ secrets.FIREFOX_API_SECRET }}
