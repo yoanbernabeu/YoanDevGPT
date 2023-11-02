@@ -70,23 +70,15 @@ jobs:
           path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
 
       - name: Rename Firefox Extension Artifact
-        run: mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.zip
+        run: mv ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
         shell: bash
-
-      - name: Rename Firefox Extension Artifact Manifest
-        run: |
-          cd ${{ env.FIREFOX_EXTENSION_DIR }}
-          mv ./manifest.json ${{ runner.workspace }}/manifest.json
-        shell: bash
-        env:
-          FIREFOX_EXTENSION_DIR: "firefox"
 
       - name: Upload to Firefox
         uses: thoughtsunificator/firefox-publish-action@v0.0.2
         with:
           firefox-guid: '{004967b0-d487-4a52-894e-732cb69de4f7}'
-          firefox-manifest: ${{ runner.workspace }}/manifest.json
-          zip: ${{ runner.workspace }}/firefox_${{ github.event.repository.name }}.zip
+          firefox-manifest: ./dist/firefox/manifest.json
+          zip: ./dist/firefox/firefox_${{ github.event.repository.name }}.zip
           firefox-jwt-issuer: ${{ secrets.FIREFOX_API_KEY }}
           firefox-jwt-secret: ${{ secrets.FIREFOX_API_SECRET }}
         env:
