@@ -57,7 +57,7 @@ jobs:
       - name: Publish Firefox Extension Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: firefox-extension
+          name: firefox_${{ github.event.repository.name }}.xpi
           path: ./dist/firefox/firefox_${{ github.event.repository.name }}.xpi
 
       - name: Upload Chrome Extension to Release
