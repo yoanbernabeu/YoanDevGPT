@@ -74,8 +74,12 @@ jobs:
         shell: bash
 
       - name: Rename Firefox Extension Artifact Manifest
-        run: mv ./dist/firefox/manifest.json ${{ runner.workspace }}/manifest.json
+        run: |
+          cd ${{ env.FIREFOX_EXTENSION_DIR }}
+          mv ./manifest.json ${{ runner.workspace }}/manifest.json
         shell: bash
+        env:
+          FIREFOX_EXTENSION_DIR: "firefox"
 
       - name: Upload to Firefox
         uses: thoughtsunificator/firefox-publish-action@v0.0.2
