@@ -79,6 +79,9 @@ jobs:
           mv ./firefox/manifest.json ./public/manifest.json
         shell: bash
 
+      - name: List files in ./public
+        run: ls -a ./public
+
       - name: Upload to Firefox
         uses: thoughtsunificator/firefox-publish-action@v0.0.2
         with:
